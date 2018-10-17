@@ -9,10 +9,46 @@ const rl = readline.createInterface({
 
 
 function rockPaperScissors(hand1, hand2) {
+  
+  //const checkWhoWins = (hand1,hand2) => {
 
-  // Write code here
+    if(hand1 === hand2) {
+      return "The result is a tie!";
 
-}
+    } else if(hand1 === "rock") {
+      if(hand2 === "scissors") {
+        return "Hand one wins!";
+      } else {
+        return "Hand two wins!";
+      }
+
+    } else if(hand1 === "paper") {
+      if(hand2 === "rock") {
+        return "Hand one wins!";
+      }
+      else {
+        return "Hand two wins!";
+      }
+
+    } else if(hand1 === "scissors") {
+      if(hand2 === "rock") {
+        return "Hand two wins!";
+      }
+      else {
+        return "Hand one wins!";
+      }
+    }
+  //}
+
+  /*if (hand1 && hand2 === 'rock' || 'paper' || 'scissors') {
+    checkWhoWins();
+  } else {
+    return "Please enter rock, paper, or scissors in lowercase."
+  } */
+} 
+
+    
+
 
 function getPrompt() {
   rl.question('hand1: ', (answer1) => {
