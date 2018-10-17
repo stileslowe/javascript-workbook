@@ -2,8 +2,13 @@
 
 //Write a JavaScript program to display the current day and time.
 
+<<<<<<< Updated upstream
 const todaysDate = new Date; //declare a constant variable called todaysDate. Use method new Date; to define the variable as the current date. 
 console.log(todaysDate); //print todaysDate.
+=======
+const todaysDate = new Date; //establish a constant variable called todaysDate. Use method new Date; to define the variable as the current date. 
+todaysDate(); //print todaysDate.
+>>>>>>> Stashed changes
 
 //Write a JavaScript program to convert a number to a string.
 
