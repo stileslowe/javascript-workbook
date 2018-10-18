@@ -2,66 +2,83 @@
 
 //Write a JavaScript program to display the current day and time.
 
-<<<<<<< Updated upstream
-const todaysDate = new Date; //declare a constant variable called todaysDate. Use method new Date; to define the variable as the current date. 
-console.log(todaysDate); //print todaysDate.
-=======
-const todaysDate = new Date; //establish a constant variable called todaysDate. Use method new Date; to define the variable as the current date. 
-todaysDate(); //print todaysDate.
->>>>>>> Stashed changes
+const todaysDate = () => { 
+  const today = new Date(); 
+  console.log(today); 
+}
+todaysDate(); //run todaysDate
 
 //Write a JavaScript program to convert a number to a string.
 
-const num = 1982; //declare a constant variable called num and define it as 1982.
-const numToString = num.toString(); //declare a constant variable called numToString. use method toString to convert num to a string.
-console.log(numToString); //print the new string
+const numToString = (num) => {
+  const newString = num.toString(); 
+  console.log(newString); 
+}
+numToString(1776);
 
 //Write a JavaScript program to convert a string to the number.
 
-const myString = '9175729249';
-const myNewNum = Number(myString);
-console.log(myNewNum);
-
-const myContact = parseInt("9175729249 for Stiles");
-console.log(myContact);
+const stringToNum = (myString) => {
+  const myNewNum = Number(myString);
+  console.log(myNewNum);
+}
+stringToNum('9175729249');
 
 /*Write a JavaScript program that takes in different datatypes and prints out whether they are a:
 Boolean
-Null ****
+Null 
 Undefined
 Number
-NaN *******
+NaN 
 String*/
 
-console.log(typeof false)
-// the datatype of null is an object "You can consider it a bug in JavaScript that typeof null is an object. It should be null."
-console.log(typeof fifty)
-console.log(typeof 9)
-// NaN part of the Number object. It is still a numeric data type, but it is undefined as a real number.
-console.log(typeof "dog")
-
+const whatDatatype = (dataType) => { 
+  console.log(typeof dataType);
+}
+whatDatatype('forty four');
 
 //Write a JavaScript program that adds 2 numbers together.
-const newSum = 5 + 19;
-console.log(newSum);
+
+const newSum = (num1,num2) => {
+  console.log(num1 + num2);
+}
+newSum(3,6);
 
 //Write a JavaScript program that runs only when 2 things are true.
-const dog = 4;
-const cat = 1;
 
-dog === 4 && cat === 1
-  ? console.log(5+20)
-  : console.log('no can do');
+const isValidPresident = (num1,num2) => {
+  if (num1 && num2 <= 44) {
+    console.log('Valid President');
+  } else {
+    console.log('Not Valid President.')
+  }
+}
+isValidPresident(40,5);
+
+// -- OR --
+
+const bothTrueNewSum = (num1,num2) => { 
+  num1 && num2 > 0
+    ? console.log(num1 + num2)
+    : console.log('Integers only please. Thanks.');
+}
+
+bothTrueNewSum(0,6);
 
 //Write a JavaScript program that runs when 1 of 2 things are true.
 
-dog === 4 || cat === 5
-  ? console.log(5+21)
-  : console.log('no can do');
+const orTrueNewSum = (num1,num2) => { 
+  num1 || num2 > 0
+    ? console.log(num1 + num2)
+    : console.log('Integers only please. Thanks.');
+}
+orTrueNewSum(0,6);  
 
 //Write a JavaScript program that runs when both things are not true.
 
-dog === 19 || cat === 6
-  ? console.log('no can do')
-  : console.log(5+22);
-
+const bothFalseNewSum = (num1,num2) => { 
+  num1 && num2 == 0
+    ? console.log('Integers only please. Thanks.')
+    : console.log(num1 + num2);
+}
+bothFalseNewSum(9,6);  
