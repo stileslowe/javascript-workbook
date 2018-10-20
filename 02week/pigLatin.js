@@ -10,88 +10,32 @@ const rl = readline.createInterface({
 
 function pigLatin(word) {
 
-  // Your code here
+  const translateWord = (word) => { // define translateWord with parameter word
+    const wordArray = word.toLowerCase().trim().split(''); // define an array: converts string to array and characters to lowercase and stores in array
+    const vowelsArray = ['a','e','i','o','u']; // define an array to hold all vowels for comparison
+    let wordArrayEnd = []; // define an array to store the last half of the word
+    let consonantArray = []; // define an array to store the first half of the word
   
-  //const translateWord = (word) => {
-
-  const wordArray = word.split('');
-  
-  
-  const vowelsArray = ['a','e','i','o','u'];
-  //const vowelsArrayLength = vowelsArray.length;
-  
-  const wordLength = wordArray.length;
-  
-  
- 
-  
-
-  const consonantArray = [];
-  let wordArrayEnd = [];
-
-  for (let step = 0; step < wordLength; step++) {
-
-    const letter = wordArray[step];
-    //console.log(step);
-    //console.log(letter + "this is the letter im on in the loop");
-    if (vowelsArray.includes(letter)) {
-      if (step == [0]) {
-        console.log(word + 'yay');
-        break;
-      } {
-          
-        //console.log(letter + " - this is the vowel");
-        //console.log(step);
-        wordArrayEnd = wordArray.slice(step);
-        //console.log(wordArrayEnd);
-        break;
+    for (let step = 0; step < wordArray.length; step++) { // create a loop to step through each element in the word array
+      const letter = wordArray[step]; // define each value of the array as a letter
+      if (vowelsArray.includes(letter)) { // if the word array includes any items in the vowels array
+        if (step == [0]) { // and if the first letter in the array matches a vowel
+          return (word + 'yay'); // return the word with attached yay at the end 
+        } else { // otherwise
+          wordArrayEnd = wordArray.slice(step); // store the remaining elements in the array, introduced above, starting at the index of the first vowel found
+          break; // stop the loop
+          }
+      } else { // Otherwise (the letter is a consonant) 
+        consonantArray.push(letter); // in array defined above store each letter that's not a vowel at each loop until a vowel is found
       }
-    }
-      
-    consonantArray.push(letter);
-      
+    } 
+  
+    const pigLatinWord = wordArrayEnd.concat(consonantArray + 'ay').join(""); // define new array: add ay to the consonantArray and add that to end of wordArrayEnd and make it a string
+    return pigLatinWord // return the translated word 
   }
-
-  /*for (let vowel = 0, vowel < vowelsArrayLength; vowel++) {
-        if (vowels.includes(letter)) {
-          console.log(letter);
-        }
-      }*/
-  //console.log(letter);
-    
-
-
-
-  //const consonant = wordArray.shift();
-  //console.log(consonant);
-    
-  //console.log(consonantArray);
- 
-  const pigLatinArray = wordArrayEnd.concat(consonantArray + 'ay');
-  const pigLatinWord = pigLatinArray.join("");
-  console.log(pigLatinWord);
-  //console.log(wordArray);
+  console.log(translateWord(word)); // call the translate function and input your word
 }
   
-  
-  
-  
-
-
-
-//translateWord('computer');}
-//no: ask user to enter a word
-
-//yes: identify if the first letter of the word entered is a consonant or vowel
-
-//if the first letter is a vowel, add yay to the end of the word and return new word;
-//if the first letter is a consonant, then check if the next letter is a consonant, and so forth until you find a vowel
-//take the consonant(s) that you've found and add them to the end of the word and add 'ay' after those consonants.
-  
-//identifyLetter(word);
-
-
-
 function getPrompt() {
   rl.question('word ', (answer) => {
     console.log( pigLatin(answer) );
