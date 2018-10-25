@@ -23,9 +23,17 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
+function isValidPlay(row,column) {
+  
+}
+
 function horizontalWin() {
   // Your code here
+  if (board[0] === playerTurn && board[1] === playerTurn && board[2] === playerTurn) {
+   return true;
+  }
 }
+
 
 function verticalWin() {
   // Your code here
@@ -41,6 +49,7 @@ function checkForWin() {
 
 function ticTacToe(row, column) {
   // Your code here
+  // 
 }
 
 function getPrompt() {
