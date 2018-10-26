@@ -21,21 +21,28 @@ function printStacks() {
 
 function movePiece() {
   // Your code here
+  // take last number from start stack array and put at end of end stack array
 
 }
 
 function isLegal() {
   // Your code here
+  // stack cannot be empty
+  // move cannot go onto end stack if last number in the end stack array is less than itself
 
 }
 
 function checkForWin() {
   // Your code here
+  // user wins if c: 4,3,2,1
 
 }
 
 function towersOfHanoi(startStack, endStack) {
   // Your code here
+  // is the move a legal move?
+  // if so, move piece. if not, tell user the rules of why their move is not allowed.
+  // prompt user to move piece again. check for wins until win is met.
 
 }
 
