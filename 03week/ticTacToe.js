@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 let board = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
@@ -23,13 +24,30 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-function isValidPlay(row,column) {
+function updateBoard(row,column) {
+  board[row][column] = playerTurn;
+}
+function switchPlayer() {
   
+  if (playerTurn === 'X') {
+    playerTurn = 'O'
+  } else {
+    playerTurn = 'X'
+  }
+}
+
+function isValidPlay(row,column) { 
+  
+  if (row < 3 && column < 3 && row >= 0 && column >= 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function horizontalWin() {
   // Your code here
-  if (board[0] === playerTurn && board[1] === playerTurn && board[2] === playerTurn) {
+  if (board[0][0] === playerTurn && board[0][1] === playerTurn && board[0][2] === playerTurn) {
    return true;
   }
 }
@@ -45,10 +63,24 @@ function diagonalWin() {
 
 function checkForWin() {
   // Your code here
+  return true;
 }
 
 function ticTacToe(row, column) {
   // Your code here
+  if (isValidPlay(row,column)) {
+    updateBoard(row,column);
+    if (checkForWin()) {
+      console.log(playerTurn + ' wins!')
+    } else {
+      switchPlayer();
+      getPrompt();
+    }
+
+  } else {
+    console.log('Enter a valid move');
+    getPrompt();
+  }
   // 
 }
 
@@ -58,7 +90,7 @@ function getPrompt() {
   rl.question('row: ', (row) => {
     rl.question('column: ', (column) => {
       ticTacToe(row, column);
-      getPrompt();
+      
     });
   });
 
