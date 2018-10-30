@@ -20,39 +20,78 @@ let activeStacks = stacks;
 // let activeStackThree = Object.values(stacks['c']);
 
 function printStacks() {
-  console.log("a: " + activeStacks.a + " this is activeStacks");
-  console.log("b: " + activeStacks.b + " this is activeStacks");
-  console.log("c: " + activeStacks.c + " this is activeStacks");
-  console.log(stacks)
+  console.log("a: " + activeStacks.a);
+  console.log("b: " + activeStacks.b);
+  console.log("c: " + activeStacks.c);
+  //console.log(stacks)
 }
 
-const isTheStackEmpty = () => {
+// const isTheStackEmpty = (startStack) => {
   
-  if (pileTwo === undefined || pileTwo.length == 0) {
-    console.log('this array is empty');
-    return true;
-  } 
-}
+//   if (activeStacks[startStack] === undefined || activeStacks[startStack].length == 0) {
+//     console.log('this array is empty');
+//     return true;
+//   } 
+// }
+const startPop = (activeStacks,startStack) => {
+  activeStacks[startStack].pop();}
+
+const endPush = (activeStacks,endStack) => {
+  activeStacks[endStack].push(startPop);}
+
 
 function movePiece() {
-  
+  startPop();
+  endPush();
   // Your code here
   // take last number from start stack array and put at end of end stack array
+  
+  console.log(startPop);
+  
+  console.log(endPush);
 
 }
 
-function isLegal() {
-  // Your code here
+// const properMove = (startPop,endPush) => {
+//   if(startPop < endPush) {
+//     return true;
+//   }
+// }
 
+function isLegal(startPop,endPush,endStack) {
+  // Your code here
+  if (activeStacks[endStack] === undefined) {
+    console.log('this is triggering');
+    return true;
+    
+  } 
+
+  if (startPop > endPush) {
+    return false;
+  }
+  // if(isTheStackEmpty()) {
+  //   console.log('Please move from a non-empty stack.');
+  // } else {
+  //   properMove();
+  // }
   // start stack cannot be empty
   // move cannot go onto end stack if last number in the end stack array is less than itself
 
 }
 
-function checkForWin() {
+const checkForWin = (activeStacks) => {
   // Your code here
   // user wins if c: 4,3,2,1
-
+  //const lastStack = activeStacks[];
+  if (activeStacks === {a:[],b:[],c:[4,3,2,1]}) {
+    console.log('You win!');
+    return true;
+  } else {
+    return false;
+  }
+  //} else {
+    //getPrompt();
+//}
 }
 
 function towersOfHanoi(startStack, endStack) {
@@ -60,15 +99,34 @@ function towersOfHanoi(startStack, endStack) {
   // is the move a legal move?
   // if so, move piece. if not, tell user the rules of why their move is not allowed.
   // prompt user to move piece again. check for wins until win is met.
+  // if (isLegal()) {
+  //   movePiece(startStack,endStack);
+  // } else {
+  //   console.log('illegal move');
+  // }
+  if (isLegal(startPop,endPush,endStack)) {
+    movePiece();
+  }
 
-}
+  if (checkForWin()) { //if won, set stacks back to original stacks.
+    console.log('this is reading checkforwin is true');
+    //activeStacks = stacks;
+  } else {
+    getPrompt();
+  }
+} 
+
+
+  
+
+
 
 function getPrompt() {
   printStacks();
   rl.question('start stack: ', (startStack) => {
     rl.question('end stack: ', (endStack) => {
       towersOfHanoi(startStack, endStack);
-      getPrompt();
+      //getPrompt();
     });
   });
 }
