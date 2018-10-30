@@ -7,19 +7,35 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-let stacks = {
+const stacks = {
   a: [4, 3, 2, 1],
   b: [],
   c: []
 };
 
+let activeStacks = stacks;
+
+// let activeStackOne = Object.values(stacks['a']);
+// let activeStackTwo = Object.values(stacks['b']);
+// let activeStackThree = Object.values(stacks['c']);
+
 function printStacks() {
-  console.log("a: " + stacks.a);
-  console.log("b: " + stacks.b);
-  console.log("c: " + stacks.c);
+  console.log("a: " + activeStacks.a + " this is activeStacks");
+  console.log("b: " + activeStacks.b + " this is activeStacks");
+  console.log("c: " + activeStacks.c + " this is activeStacks");
+  console.log(stacks)
+}
+
+const isTheStackEmpty = () => {
+  
+  if (pileTwo === undefined || pileTwo.length == 0) {
+    console.log('this array is empty');
+    return true;
+  } 
 }
 
 function movePiece() {
+  
   // Your code here
   // take last number from start stack array and put at end of end stack array
 
@@ -27,7 +43,8 @@ function movePiece() {
 
 function isLegal() {
   // Your code here
-  // stack cannot be empty
+
+  // start stack cannot be empty
   // move cannot go onto end stack if last number in the end stack array is less than itself
 
 }
