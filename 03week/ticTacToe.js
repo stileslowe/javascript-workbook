@@ -67,7 +67,7 @@ function horizontalWin() {
 
 
 function verticalWin() {
-  const verticalValue = board[0][0];
+  //const verticalValue = board[0][0];
   
 }
 
@@ -77,14 +77,14 @@ function diagonalWin() {
 
 function checkForWin() {
   // Your code here
-  const didWin = false;
-  console.log('checking for win.');
+  //const didWin = false;
+  //console.log('checking for win.');
   // if (horizontalWin()) {
   //   console.log('yay i win');
   //   return true;
   // }
   //console.log(horizontalWin())
-  console.log(verticalValue);
+  //console.log(verticalValue);
   return horizontalWin();
   
 
