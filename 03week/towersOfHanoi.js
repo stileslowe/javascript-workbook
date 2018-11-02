@@ -7,35 +7,49 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-let stacks = {
+const stacks = {
   a: [4, 3, 2, 1],
   b: [],
   c: []
 };
 
+let activeStacks = stacks;
+
 function printStacks() {
-  console.log("a: " + stacks.a);
-  console.log("b: " + stacks.b);
-  console.log("c: " + stacks.c);
+  console.log("a: " + activeStacks.a);
+  console.log("b: " + activeStacks.b);
+  console.log("c: " + activeStacks.c);
 }
 
-function movePiece() {
+function movePiece(startStack, endStack, activeStacks) {
   // Your code here
-
+  let startPop = activeStacks[startStack].pop();
+  console.log(startPop);
+  let endPush = activeStacks[endStack].push(startPop);
+  console.log(endPush);
+  checkForWin();
 }
 
 function isLegal() {
   // Your code here
-
+  return true;
 }
 
 function checkForWin() {
   // Your code here
-
+  //const lastStackWin = activeStacks
+  console.log("checking for win");
 }
 
-function towersOfHanoi(startStack, endStack) {
+function towersOfHanoi(startStack, endStack, activeStacks) {
   // Your code here
+  if (isLegal()) {
+    movePiece(startStack, endStack, activeStacks);
+    checkForWin();
+  } else {
+    console.log("You've made an illegal move. You cannot move a larger piece onto a smaller piece. You also cannot move a piece from an empty stack.");
+    getPrompt();
+  }
 
 }
 
