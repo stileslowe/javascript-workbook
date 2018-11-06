@@ -6,6 +6,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 let board = [
   [' ', ' ', ' '],
   [' ', ' ', ' '],
@@ -23,12 +24,51 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 
-function horizontalWin() {
-  // Your code here
+function updateBoard(row, column) {
+  board[row][column] = playerTurn;
+}
+function switchPlayer() {
+
+  if (playerTurn === 'X') {
+    playerTurn = 'O'
+  } else {
+    playerTurn = 'X'
+  }
 }
 
-function verticalWin() {
+function isValidPlay(row, column) {
+
+  if (row < 3 && column < 3 && row >= 0 && column >= 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function horizontalWin() {
   // Your code here
+
+  let counter = 0;
+
+  board[0].forEach(item => {
+    if (item === playerTurn) {
+      counter = counter + 1;
+      console.log(counter,playerTurn);
+      
+    }
+  });
+
+  if (counter === 3) {
+    console.log(counter + ' is three.');
+    return true;
+  }
+  return false;
+}
+
+
+function verticalWin() {
+  //const verticalValue = board[0][0];
+  
 }
 
 function diagonalWin() {
@@ -37,10 +77,35 @@ function diagonalWin() {
 
 function checkForWin() {
   // Your code here
+  //const didWin = false;
+  //console.log('checking for win.');
+  // if (horizontalWin()) {
+  //   console.log('yay i win');
+  //   return true;
+  // }
+  //console.log(horizontalWin())
+  //console.log(verticalValue);
+  return horizontalWin();
+  
+
 }
 
 function ticTacToe(row, column) {
   // Your code here
+  if (isValidPlay(row, column)) {
+    updateBoard(row, column);
+    if (checkForWin()) {
+      console.log(playerTurn + ' wins!')
+    } else {
+      switchPlayer();
+      getPrompt();
+    }
+
+  } else {
+    console.log('Enter a valid move');
+    getPrompt();
+  }
+  // 
 }
 
 function getPrompt() {
@@ -49,7 +114,7 @@ function getPrompt() {
   rl.question('row: ', (row) => {
     rl.question('column: ', (column) => {
       ticTacToe(row, column);
-      getPrompt();
+
     });
   });
 
@@ -64,22 +129,22 @@ if (typeof describe === 'function') {
   describe('#ticTacToe()', () => {
     it('should place mark on the board', () => {
       ticTacToe(1, 1);
-      assert.deepEqual(board, [ [' ', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' '] ]);
+      assert.deepEqual(board, [[' ', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' ']]);
     });
     it('should alternate between players', () => {
       ticTacToe(0, 0);
-      assert.deepEqual(board, [ ['O', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' '] ]);
+      assert.deepEqual(board, [['O', ' ', ' '], [' ', 'X', ' '], [' ', ' ', ' ']]);
     });
     it('should check for vertical wins', () => {
-      board = [ [' ', 'X', ' '], [' ', 'X', ' '], [' ', 'X', ' '] ];
+      board = [[' ', 'X', ' '], [' ', 'X', ' '], [' ', 'X', ' ']];
       assert.equal(verticalWin(), true);
     });
     it('should check for horizontal wins', () => {
-      board = [ ['X', 'X', 'X'], [' ', ' ', ' '], [' ', ' ', ' '] ];
+      board = [['X', 'X', 'X'], [' ', ' ', ' '], [' ', ' ', ' ']];
       assert.equal(horizontalWin(), true);
     });
     it('should check for diagonal wins', () => {
-      board = [ ['X', ' ', ' '], [' ', 'X', ' '], [' ', ' ', 'X'] ];
+      board = [['X', ' ', ' '], [' ', 'X', ' '], [' ', ' ', 'X']];
       assert.equal(diagonalWin(), true);
     });
     it('should detect a win', () => {
